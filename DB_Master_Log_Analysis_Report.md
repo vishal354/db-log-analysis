@@ -29,7 +29,13 @@ Purge is frozen at trx 5,845,989,957 across all snapshots while the transaction 
 
 14.2 GB used of 14.7 GB total (96.6%). Only ~500 MB free. Swap is low (~97 MB / 8 GB) but there is zero headroom -- any spike from connections, sorts, or temp tables risks swap thrashing.
 
-### 1.3 Four mysqld Processes (High)
+### 1.3 System Load Rising with I/O Spike
+
+![Load Average](report_figures/01_load_average.png)
+
+15-min average declining from a prior peak (1.18 -> 0.88), but the 1-min average reverses at 01:24--01:25 (0.47 -> 0.65), correlating with the I/O write burst. CPU shows 3.8% IO wait -- persistent disk contention even at baseline.
+
+### 1.4 Four mysqld Processes (High)
 
 | PID | CPU % | Started | Notes |
 |-----|-------|---------|-------|
@@ -40,7 +46,7 @@ Purge is frozen at trx 5,845,989,957 across all snapshots while the transaction 
 
 Combined 146% CPU. Each has its own buffer pool, fragmenting cache across 4 processes instead of one large pool. Staggered start dates suggest orphaned processes from failed restarts.
 
-### 1.4 I/O Write Spike at 01:24 (High)
+### 1.5 I/O Write Spike at 01:24 (High)
 
 ![InnoDB I/O](report_figures/04_innodb_io.png)
 
@@ -48,7 +54,7 @@ InnoDB writes surged from ~13/s to 236/s (18x). Redo log growth accelerated from
 
 ![Redo Log Growth](report_figures/06_redo_log_growth.png)
 
-### 1.5 Other Issues
+### 1.6 Other Issues
 
 | Issue | Severity | Detail |
 |-------|----------|--------|
