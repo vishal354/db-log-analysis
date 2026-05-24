@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.exe
+.env
+*.canvas.tsx
+*.canvas.data.json
+*.canvas.status.json
