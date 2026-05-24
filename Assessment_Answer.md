@@ -1,9 +1,5 @@
 # Assessment: MySQL DB-Master Log Analysis
 
-**Log:** Logs-sanitised-2026-04-17_For Assesment.csv (5,344 lines)  
-**Host:** svc-db-node-001.internal.example-corp.com (db-master)  
-**Window:** 2026-04-16 01:18--01:25 UTC (8 snapshots at ~1-minute intervals)
-
 ---
 
 ## Part 1: Issues Observed
